@@ -1,0 +1,56 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+const database = 'test';
+const collection = 'NEW_COLLECTION_NAME';
+
+// The current database to use.
+use(database);
+
+// Create a new collection.
+//db.createCollection(collection);
+
+// The prototype form to create a collection:
+/* db.createCollection( <name>,
+  {
+    capped: <boolean>,
+    autoIndexId: <boolean>,
+    size: <number>,
+    max: <number>,
+    storageEngine: <document>,
+    validator: <document>,
+    validationLevel: <string>,
+    validationAction: <string>,
+    indexOptionDefaults: <document>,
+    viewOn: <string>,
+    pipeline: <pipeline>,
+    collation: <document>,
+    writeConcern: <document>
+  }
+)*/
+
+// db.companies.find({name: "Babelgum"})
+
+// db.companies.find({number_of_employees: {$gt: 5000}}).limit(20).sort({number_of_employees:1})
+
+//db.companies.find({$and:[{founded_year: {$gte:2000}},{founded_year: {$lte:2005}}]},{name:1, founded_year:1})
+
+//db.companies.find()
+
+//db.companies.find({$and:[{"ipo.valuation_amount": {$gt:100000000}},{founded_year: {$lt:2010}}]},{name:1, ipo:1})
+
+//db.companies.find({$and:[{number_of_employees: {$lt:1000}},{founded_year: {$lte:2005}}]}).sort({number_of_employees:1}).limit(10)
+
+//db.companies.find({partners: {$exists:true}})
+
+//db.companies.find({category_code: {$eq: null}})
+
+//db.companies.find({$and:[{number_of_employees: {$gte:100}},{number_of_employees: {$lt:1000}}]},{name:1, number_of_employees:1})
+
+//db.companies.find().sort({"ipo.valuation_amount":-1}).limit(10)
+
+//db.companies.find().sort({number_of_employees:1}).limit(10)
+
+//db.companies.find({$and:[{founded_year: {$lt:2000}},{"acquisition.price_amount": {$gt:10000000}}]})
+
+db.companies.find({"acquisition.acquired_year": {$gt: 2010}},{name:1, acquisition:1}).sort({"acquisition.price_amount":1})
